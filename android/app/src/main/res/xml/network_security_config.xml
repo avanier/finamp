@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config>
+        <trust-anchors>
+          <certificates src="user" />
+          <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+    <!-- everything below is really just provided as an exmaple of trying to
+    force this thing to eat additional CAs and just won't. This seems to be a
+    known bug.
+
+    https://github.com/flutter/flutter/issues/65841#issuecomment-692810524 -->
+    <domain-config>
+      <domain includeSubdomains="true">somedomain.test</domain>
+      <trust-anchors>
+        <!-- <certificates src="@raw/trusted_roots"/> -->
+        <certificates src="system"/>
+        <certificates src="user"/>
+      </trust-anchors>
+    </domain-config>
+</network-security-config>
